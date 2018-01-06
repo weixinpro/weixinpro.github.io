@@ -1,1 +1,1 @@
-console.log(WeixinJSBridge);
+console.log(WeixinJSBridge||"");
