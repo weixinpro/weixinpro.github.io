@@ -30,9 +30,10 @@ function is_ios() {
 }
 
 function android_auto_jump() {
-    WeixinJSBridge.invoke("jumpToInstallUrl", {}, function(e) {});
-    window.close();
-    WeixinJSBridge.call("closeWindow")
+    console.log(WeixinJSBridge);
+    // WeixinJSBridge.invoke("jumpToInstallUrl", {}, function(e) {});
+    // window.close();
+    // WeixinJSBridge.call("closeWindow")
 }
 
 function ios_auto_jump() {
@@ -45,15 +46,20 @@ function ios_auto_jump() {
 }
 
 function onAutoinit() {
-    alert("进来");
+    if (is_android()) {
+        android_auto_jump();
+        return false
+    }
+    if (is_ios()) {
+        ios_auto_jump();
+        return false
+    }
 }
 if (is_weixin()) {
     if (typeof WeixinJSBridge == "undefined") {
         if (document.addEventListener) {
-            console.log("addEventListener");
             document.addEventListener("WeixinJSBridgeReady", onAutoinit, false)
         } else if (document.attachEvent) {
-            console.log("attachEvent");
             document.attachEvent("WeixinJSBridgeReady", onAutoinit);
             document.attachEvent("onWeixinJSBridgeReady", onAutoinit)
         }
