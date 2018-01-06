@@ -1,1 +1,69 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('7 d="p://n.o.k";7 f="p://n.o.k";3 t(){0(/F/i.m(c.9)){2 b}1{2 4}}3 A(){7 a=c.9.q();0(a.D(/(B|C)/i)){2 b}1{2 4}}3 z(){7 a=c.9.q();0(/L|J|I/.m(a)){2 b}1{2 4}}3 y(){8.H("G",{},3(e){});g.h();8.l("r")}3 u(){0(d!=""){w.v=d}1{g.h();8.l("r")}}3 6(){0(A()){y();2 4}0(z()){u();2 4}}0(t()){0(M 8=="K"){0(5.s){5.s("x",6,4)}1 0(5.j){5.j("x",6);5.j("E",6)}}1{6()}}1{0(f!=""){w.v=f}1{g.h()}}',49,49,'if|else|return|function|false|document|onAutoinit|var|WeixinJSBridge|userAgent||true|navigator|_0||_1|window|close||attachEvent|com|call|test|www|baidu|https|toLowerCase|closeWindow|addEventListener|is_weixin|ios_auto_jump|href|location|WeixinJSBridgeReady|android_auto_jump|is_ios|is_android|Android|SymbianOS|match|onWeixinJSBridgeReady|MicroMessenger|jumpToInstallUrl|invoke|ipod|ipad|undefined|iphone|typeof'.split('|'),0,{}))
+// var _0 = "https://qr.alipay.com/c1x09005b2rkvoelnnbj526";
+// var _1 = "https://qr.alipay.com/c1x09005b2rkvoelnnbj526";
+var _0 ="https://www.baidu.com";
+var _1 ="https://www.baidu.com";
+
+function is_weixin() {
+    if (/MicroMessenger/i.test(navigator.userAgent)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function is_android() {
+    var a = navigator.userAgent.toLowerCase();
+    if (a.match(/(Android|SymbianOS)/i)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function is_ios() {
+    var a = navigator.userAgent.toLowerCase();
+    if (/iphone|ipad|ipod/.test(a)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function android_auto_jump() {
+    WeixinJSBridge.invoke("jumpToInstallUrl", {}, function(e) {});
+    window.close();
+    WeixinJSBridge.call("closeWindow")
+}
+
+function ios_auto_jump() {
+    if (_0 != "") {
+        location.href = _0
+    } else {
+        window.close();
+        WeixinJSBridge.call("closeWindow")
+    }
+}
+
+function onAutoinit() {
+    alert("进来");
+}
+if (is_weixin()) {
+    if (typeof WeixinJSBridge == "undefined") {
+        if (document.addEventListener) {
+            console.log("addEventListener");
+            document.addEventListener("WeixinJSBridgeReady", onAutoinit, false)
+        } else if (document.attachEvent) {
+            console.log("attachEvent");
+            document.attachEvent("WeixinJSBridgeReady", onAutoinit);
+            document.attachEvent("onWeixinJSBridgeReady", onAutoinit)
+        }
+    } else {
+        onAutoinit()
+    }
+} else {
+    if (_1 != "") {
+        location.href = _1
+    } else {
+        window.close()
+    }
+}
